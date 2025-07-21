@@ -9,6 +9,7 @@ defmodule MyLibrary.Administration.Admin do
     field :current_password, :string, virtual: true, redact: true
     field :confirmed_at, :utc_datetime
 
+
     timestamps(type: :utc_datetime)
   end
 

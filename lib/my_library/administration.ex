@@ -350,4 +350,100 @@ defmodule MyLibrary.Administration do
       {:error, :admin, changeset, _} -> {:error, changeset}
     end
   end
+
+  alias MyLibrary.Administration.AdminProfile
+
+  @doc """
+  Returns the list of admin_profiles.
+
+  ## Examples
+
+      iex> list_admin_profiles()
+      [%AdminProfile{}, ...]
+
+  """
+  def list_admin_profiles do
+    Repo.all(AdminProfile)
+  end
+
+  @doc """
+  Gets a single admin_profile.
+
+  Raises `Ecto.NoResultsError` if the Admin profile does not exist.
+
+  ## Examples
+
+      iex> get_admin_profile!(123)
+      %AdminProfile{}
+
+      iex> get_admin_profile!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_admin_profile!(id), do: Repo.get!(AdminProfile, id)
+
+  @doc """
+  Creates a admin_profile.
+
+  ## Examples
+
+      iex> create_admin_profile(%{field: value})
+      {:ok, %AdminProfile{}}
+
+      iex> create_admin_profile(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_admin_profile(attrs \\ %{}) do
+    %AdminProfile{}
+    |> AdminProfile.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a admin_profile.
+
+  ## Examples
+
+      iex> update_admin_profile(admin_profile, %{field: new_value})
+      {:ok, %AdminProfile{}}
+
+      iex> update_admin_profile(admin_profile, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_admin_profile(%AdminProfile{} = admin_profile, attrs) do
+    admin_profile
+    |> AdminProfile.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a admin_profile.
+
+  ## Examples
+
+      iex> delete_admin_profile(admin_profile)
+      {:ok, %AdminProfile{}}
+
+      iex> delete_admin_profile(admin_profile)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_admin_profile(%AdminProfile{} = admin_profile) do
+    Repo.delete(admin_profile)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking admin_profile changes.
+
+  ## Examples
+
+      iex> change_admin_profile(admin_profile)
+      %Ecto.Changeset{data: %AdminProfile{}}
+
+  """
+  def change_admin_profile(%AdminProfile{} = admin_profile, attrs \\ %{}) do
+    AdminProfile.changeset(admin_profile, attrs)
+  end
 end

@@ -42,6 +42,14 @@ defmodule MyLibraryWeb.Router do
 
     live "/loans/:id", LoanLive.Show, :show
     live "/loans/:id/show/edit", LoanLive.Show, :edit
+
+    live "/admin_profiles", AdminProfileLive.Index, :index
+    live "/admin_profiles/new", AdminProfileLive.Index, :new
+    live "/admin_profiles/:id/edit", AdminProfileLive.Index, :edit
+
+    live "/admin_profiles/:id", AdminProfileLive.Show, :show
+    live "/admin_profiles/:id/show/edit", AdminProfileLive.Show, :edit
+
   end
 
   # Other scopes may use custom stacks.
