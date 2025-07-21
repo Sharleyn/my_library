@@ -2,7 +2,6 @@ defmodule MyLibrary.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias MyLibrary.Library.Loan
 
   schema "users" do
     field :name, :string

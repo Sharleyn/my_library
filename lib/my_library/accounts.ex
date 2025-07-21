@@ -107,4 +107,15 @@ defmodule MyLibrary.Accounts do
   def change_user(%User{} = user, attrs \\ %{}) do
     User.changeset(user, attrs)
   end
+
+  def users_for_select_starting_with(letter \\ "n") do
+    list_users()
+    |> Enum.filter(fn user ->
+      String.starts_with?(String.downcase(user.name), String.downcase(letter))
+    end)
+    |> Enum.map(fn user ->
+      {user.name, user.id}
+    end)
+  end
+
 end

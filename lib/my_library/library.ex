@@ -136,7 +136,13 @@ defmodule MyLibrary.Library do
       ** (Ecto.NoResultsError)
 
   """
-  def get_loan!(id), do: Repo.get!(Loan, id)
+     def get_loan!(id, opts \\ []) do
+      preload = Keyword.get(opts, :preload, [])
+
+      Loan
+      |> preload(^preload)
+      |> Repo.get!(id)
+    end
 
   @doc """
   Creates a loan.

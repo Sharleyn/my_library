@@ -86,9 +86,11 @@ defmodule MyLibraryWeb.LoanLive.FormComponent do
 
 
   defp users_for_select do
-    users = MyLibrary.Accounts.list_users()
-
-    Enum.map(users, fn user ->
+    MyLibrary.Accounts.list_users()
+    |> Enum.filter(fn user ->
+      String.starts_with?(String.downcase(user.name), "n")
+    end)
+    |> Enum.map(fn user ->
       {user.name, user.id}
     end)
   end

@@ -2,13 +2,16 @@ defmodule MyLibrary.Library.Loan do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias MyLibrary.Library.Book
+  alias MyLibrary.Accounts.User
+
   schema "loans" do
     field :borrowed_at, :naive_datetime
     field :due_at, :naive_datetime
     field :returned_at, :naive_datetime
 
-    belongs_to :user, MyLibrary.Accounts.User
-    belongs_to :book, MyLibrary.Library.Book
+    belongs_to :user, User
+    belongs_to :book, Book
 
     timestamps(type: :utc_datetime)
   end
